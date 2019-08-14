@@ -66,6 +66,16 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </hash_key>
+                        <precheck_link translate="label comment">
+                            <label>Display Pre-Check</label>
+                            <comment><![CDATA[Displays a special link where customers can pre-check the loan limit with FerBuy.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </precheck_link>
 						<autocreate_invoice translate="label comment">
 							<label>Create invoice after payment</label>
 							<frontend_type>select</frontend_type>

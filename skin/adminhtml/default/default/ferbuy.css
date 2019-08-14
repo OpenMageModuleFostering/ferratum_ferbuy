@@ -15,14 +15,14 @@
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-h3.ferbuy-header { background:url(images/ferbuy.png) no-repeat 0 0; height:0; overflow:hidden; padding:22px 0 0; width:55px; }
+h3.ferbuy-header { background:url(images/ferbuy/logo-ferbuy.png) no-repeat 0 0; height:0; overflow:hidden; padding:22px 0 0; width:55px; }
 
 ul.tabs a.ferbuy-section,
 ul.tabs a.ferbuy-section:hover { background:url(images/tabs_span_bg.gif) repeat-x 0 100%; border-bottom:none; padding:0.5em 0.5em 0.5em 1.5em; }
 ul.tabs a.ferbuy-section:hover { background-color:#d8e6e6; }
 ul.tabs a.ferbuy-section.active, ul.tabs a.ferbuy-section.active:hover { background-color:#fff; }
 ul.tabs a.ferbuy-section span,
-ul.tabs a.ferbuy-section:hover span { background:url(images/ferbuy.png) no-repeat 0 0; height:0; overflow:hidden; padding:22px 0 0; width:55px; }
+ul.tabs a.ferbuy-section:hover span { background:url(images/ferbuy/logo-ferbuy.png) no-repeat 0 0; height:0; overflow:hidden; padding:22px 0 0; width:55px; }
 
 .ferbuy-selection { border-collapse:collapse; width:100%; }
 .ferbuy-selection .ferbuy-selection-info { text-align:right; }

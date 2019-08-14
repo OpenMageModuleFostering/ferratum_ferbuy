@@ -46,7 +46,7 @@ class Ferratum_Ferbuy_PaymentController extends Mage_Core_Controller_Front_Actio
     }
     
     /**
-     * Reditect customer to the gateway using his prefered payment method
+     * Redirect customer to the gateway using his prefered payment method
      */    
 	public function redirectAction()
     {
@@ -54,9 +54,7 @@ class Ferratum_Ferbuy_PaymentController extends Mage_Core_Controller_Front_Actio
         $session->setFerbuyQuoteId($session->getQuoteId());
         
         $this->loadLayout();
-        $block = $this->getLayout()->createBlock(
-            'Ferratum_Ferbuy_Block_Redirect'
-        );
+        $block = $this->getLayout()->createBlock('ferbuy/redirect');
         
         $this->getLayout()->getBlock('content')->append($block);
         $this->renderLayout();
@@ -142,5 +140,56 @@ class Ferratum_Ferbuy_PaymentController extends Mage_Core_Controller_Front_Actio
         
         // Display transaction_id and status
         echo $data['transaction_id'].'.'.$data['status'];
+    }
+
+    public function testAction()
+    {
+        /* @var $order Mage_Sales_Model_Order */
+        $order = Mage::getModel('sales/order')->loadByIncrementId(145000011);
+        $payment = $order->getPayment();
+        var_dump($payment->getLastTransId());
+
+        var_dump($payment->getMethod());
+
+        $method = Mage::getModel('ferbuy/ferbuy')->getCode();
+        var_dump($method);
+
+        $shipmentCollection = Mage::getResourceModel('sales/order_shipment_collection')
+            ->setOrderFilter($order)
+            ->load();
+
+        foreach ($shipmentCollection as $shipment) {
+            foreach ($shipment->getAllTracks() as $track) {
+                var_dump($track->getData());
+            }
+        }
+
+        var_dump(Mage::getStoreConfig('payment/ferbuy/sort_order', 1));
+        var_dump(Mage::getStoreConfig('ferbuy/ferbuy/sort_order', 1));
+
+        Mage::helper('ferbuy')->log("FerBuy API MarkOrderShipped with response:");
+
+        var_dump(Mage::helper('ferbuy')->getIsDebug());
+
+        /*$newStatus = Mage::helper('ferbuy')->getCompleteStatus();
+        $newState = Mage_Sales_Model_Order::STATE_PROCESSING;
+        $order->setState($newState, $newStatus, "Moving to processing");
+        $order->save();*/
+
+        try {
+            /*$payment->setTransactionId('2015111113475885');
+            $formattedPrice = "80 EUR";
+            $message = Mage::helper('ferbuy')->__('Ordered amount of %s.', $formattedPrice);
+            $payment->addTransaction( Mage_Sales_Model_Order_Payment_Transaction::TYPE_ORDER, null, false, $message);
+            $order->save();*/
+
+            //$order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, Mage::helper('ferbuy')->getCompleteStatus(), "Message");
+            //$order->save();
+            /*$order->setNewTransactionId("FERBUY_123456");
+            $order->save();*/
+        }
+        catch(Exception $e) {
+            var_dump($e);
+        }
     }
 }

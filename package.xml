@@ -1,14 +1,20 @@
 <?xml version="1.0"?>
 <package>
     <name>Ferratum_Ferbuy</name>
-    <version>1.3.2</version>
+    <version>1.4.0</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
     <extends/>
     <summary>FerBuy Payment Module</summary>
     <description>FerBuy is a simple and safe payment solution based on the "buy now, pay later" concept. Through FerBuy you can shop from home and pay within 14 days. See below how simple this is.</description>
-    <notes>v1.3.2:&#xD;
+    <notes>v1.4.0:&#xD;
+    Fixing configuration errors.&#xD;
+    Adding Pre-Check link option.&#xD;
+    Adding TransactionID after the payment.&#xD;
+    Adding API MarkAsShipped.&#xD;
+&#xD;
+v1.3.2:&#xD;
     Minor bug fixes in Demo mode.&#xD;
 &#xD;
 v1.3.1:&#xD;
@@ -19,9 +25,9 @@ v1.3.1:&#xD;
 v1.3.0:&#xD;
     Adding localisation support</notes>
     <authors><author><name>Fer Buy</name><user>FerBuy</user><email>info@ferbuy.com</email></author></authors>
-    <date>2015-10-07</date>
-    <time>10:10:33</time>
-    <contents><target name="magelocal"><dir name="Ferratum"><dir name="Ferbuy"><dir name="Block"><file name="Redirect.php" hash="bdb59a1854ced707363d054ae1e9d4a4"/></dir><dir name="Helper"><file name="Data.php" hash="2bcbdb2fd52065d3b371f5c16fa44194"/></dir><dir name="Model"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Source"><file name="Modes.php" hash="aa5f540849179c47ea6eed09aad77f6d"/></dir></dir></dir></dir><file name="Base.php" hash="132170d3ea2ba0d60d5a7cdb6dff6403"/><file name="Ferbuy.php" hash="9810747c25fb19634e48be3202543282"/></dir><dir name="controllers"><file name="PaymentController.php" hash="4ece51713291736392cfd7c0cd61cc1a"/></dir><dir name="etc"><file name="adminhtml.xml" hash="f37221cd0943f83ee38d554c0d339619"/><file name="config.xml" hash="1ce98af7fbcca53276c1cdc2b17b384a"/><file name="system.xml" hash="4c6dd29d4060adbee712cab274dece96"/></dir><file name=".DS_Store" hash="f6df0519f86804d0f045060ba3f31ea0"/></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Ferratum_Ferbuy.xml" hash="eeaa05c490b6958c426577bcd3569cb6"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="ferbuy.xml" hash="b5158397519eef21968f5ce26a433549"/></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="ferbuy"><file name="redirect.phtml" hash="837f367951edbe379bc38ddd0acab8d4"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><file name="ferbuy.css" hash="819549e60f84323f494ab42e8e52af68"/><dir name="images"><file name="ferbuy.png" hash="6f69778a6152cd21c6a6ec2fdc28d1d7"/></dir></dir></dir></dir></target><target name="magelocale"><dir name="bg_BG"><file name="Ferratum_Ferbuy.csv" hash="825ea59e072564c66a4884be27b2a7c4"/></dir><dir name="cs_CZ"><file name="Ferratum_Ferbuy.csv" hash="398cba419470aa2de342a339f15a4e1c"/></dir><dir name="en_US"><file name="Ferratum_Ferbuy.csv" hash="56bf0579081bbfa96f6b4d7a2e4e5ebf"/></dir><dir name="pl_PL"><file name="Ferratum_Ferbuy.csv" hash="d9043ce3f33d401b006200d47e045a18"/></dir></target></contents>
+    <date>2015-11-12</date>
+    <time>14:15:49</time>
+    <contents><target name="magelocal"><dir name="Ferratum"><dir name="Ferbuy"><dir name="Block"><file name="Form.php" hash="7c4502b9148423ab05bf0ee457010465"/><file name="Redirect.php" hash="bdb59a1854ced707363d054ae1e9d4a4"/></dir><dir name="Helper"><file name="Data.php" hash="c72088c59b8907d51fc11b4b06c012a7"/></dir><dir name="Model"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Source"><file name="Modes.php" hash="aa5f540849179c47ea6eed09aad77f6d"/></dir></dir></dir></dir><file name="Api.php" hash="a44d0a664a39cebb1c29c9cf3d857c49"/><file name="Base.php" hash="5642c425aef8f4b17b7df00b79da5bb1"/><file name="Ferbuy.php" hash="b0d9fda0ad74dedd63fc9a714bfc977b"/><file name="Observer.php" hash="7fe4bb6766018fdfa63ce4be61838399"/></dir><dir name="controllers"><file name="PaymentController.php" hash="9deb0d8c0d3c77c74ab1e07f05a5362a"/></dir><dir name="etc"><file name="config.xml" hash="42abedafbcf88135cf8476f934f966d2"/><file name="system.xml" hash="6e894d032d58bd91ea28859056a54a76"/></dir><file name=".DS_Store" hash="f6df0519f86804d0f045060ba3f31ea0"/></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Ferratum_Ferbuy.xml" hash="eeaa05c490b6958c426577bcd3569cb6"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="ferbuy"><file name="info.phtml" hash="f92a94e8ff9539e8024bf5fb1487b92a"/><file name="mark.phtml" hash="7c65c41dec52608974ab973b2230c9c5"/><file name="redirect.phtml" hash="837f367951edbe379bc38ddd0acab8d4"/></dir></dir><dir name="layout"><file name="ferbuy.xml" hash="1d525e887035a8169c7dc9c8e5a61844"/></dir></dir></dir></dir><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="ferbuy.xml" hash="b5158397519eef21968f5ce26a433549"/></dir></dir></dir></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><file name="ferbuy.css" hash="8fe4e272be171e2072187e7490ca5940"/><dir name="images"><dir name="ferbuy"><file name="logo-ferbuy.png" hash="6f69778a6152cd21c6a6ec2fdc28d1d7"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="css"><file name="ferbuy.css" hash="f57576556d81380d56ed21b832dcbcb8"/></dir><dir name="images"><dir name="ferbuy"><file name="logo-ferbuy.png" hash="6f69778a6152cd21c6a6ec2fdc28d1d7"/></dir></dir></dir></dir></dir></target><target name="magelocale"><dir name="bg_BG"><file name="Ferratum_Ferbuy.csv" hash="825ea59e072564c66a4884be27b2a7c4"/></dir><dir name="cs_CZ"><file name="Ferratum_Ferbuy.csv" hash="398cba419470aa2de342a339f15a4e1c"/></dir><dir name="en_US"><file name="Ferratum_Ferbuy.csv" hash="51917c005131d11b9eae4596208110cf"/></dir><dir name="pl_PL"><file name="Ferratum_Ferbuy.csv" hash="d9043ce3f33d401b006200d47e045a18"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.3.0</min><max>6.0.0</max></php></required></dependencies>
 </package>

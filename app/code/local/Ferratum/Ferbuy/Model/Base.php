@@ -44,7 +44,7 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
         if ($field === null) {
             return $this->_callback;
         } else {
-            return (in_array($field, $this->_callback)) ? $this->_callback[$field] : '';
+            return (array_key_exists($field, $this->_callback)) ? $this->_callback[$field] : '';
         }
     }
     
@@ -123,11 +123,10 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
             }
             
             $statusMessage = $mail_invoice ? "Invoice # %s created and send to customer." : "Invoice # %s created.";
-            $order->addStatusToHistory(
+            $order->addStatusHistoryComment(
                 $order->getStatus(),
-                Mage::helper("ferbuy")->__($statusMessage, $invoice->getIncrementId(),
-                $mail_invoice)
-            );
+                Mage::helper("ferbuy")->__($statusMessage, $invoice->getIncrementId()))
+                ->setIsCustomerNotified($mail_invoice);
             
             return true;
 		}
@@ -173,7 +172,7 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
         if (($amountInCents != $callbackAmount) && (abs($callbackAmount - $amountInCents) > 1)) {
             Mage::helper('ferbuy')->log("OrderID: {$order->getId()} do not match amounts. Sent $amountInCents, Received: $callbackAmount");
             $statusMessage = Mage::helper("ferbuy")->__("Hacker attempt: Order total amount does not match FerBuy's gross total amount!");
-            $order->addStatusToHistory($order->getStatus(), $statusMessage);
+            $this->addStatusHistoryComment($order->getStatus(), $statusMessage);
             $order->save();
             return false;
         }
@@ -189,8 +188,9 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
     public function processCallback()
     {	    
         $id = $this->getCallbackData('reference');
-        $order = Mage::getModel('sales/order');
-        $order->loadByIncrementId($id);
+
+        /* @var $order Mage_Sales_Model_Order */
+        $order = Mage::getModel('sales/order')->loadByIncrementId($id);
 
         // Log callback data
         Mage::helper('ferbuy')->log('Receiving callback data:');
@@ -205,14 +205,14 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
         $statusComplete    = Mage::helper('ferbuy')->getCompleteStatus();
         $statusFailed      = Mage::helper('ferbuy')->getFailedStatus();
         $statusFraud       = $this->getConfigData("fraud_status");
-        $autocreateInvoice = Mage::helper('ferbuy')->getAutocreateInvoice();
+        $autoCreateInvoice = Mage::helper('ferbuy')->getAutocreateInvoice();
         $evInvoicingFailed = $this->getConfigData("event_invoicing_failed");
         
 		$complete      = false;
 		$canceled      = false;
 		$newState      = null;
 		$newStatus     = true;
-		$statusMessage = '';        
+		$statusMessage = '';
         
 		switch ($this->getCallbackData('status')) {
 			case "200":
@@ -253,9 +253,9 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
         
         foreach ($order->getStatusHistoryCollection(true) as $_item) {
             // Don't update order status if the payment is complete
-            if ($_item->getStatusLabel() == ucfirst($statusComplete)) {
+            if ($_item->getStatusLabel() == Mage_Sales_Model_Order::STATE_COMPLETE) {
                 $canUpdate = false;
-            // Uncancel an order if the payment is considered complete
+            // Un-cancel an order if the payment is considered complete
             } elseif (($_item->getStatusLabel() == ucfirst($statusFailed)) ||
                       ($_item->getStatusLabel() == ucfirst($statusFraud))) {
                 $undoCancel = true;
@@ -265,7 +265,7 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
         // Lock
         $this->lock();
         
-        // Uncancel order if necessary
+        // Un-cancel order if necessary
         if ($undoCancel) {
             foreach($order->getAllItems() as $_item)    { 
                 if ($_item->getQtyCanceled() > 0) $_item->setQtyCanceled(0)->save();
@@ -283,9 +283,16 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
                   ->setTaxCanceled(0)
                   ->setTotalCanceled(0);
         }
-        
+
 		// Update the status if changed
 		if ($canUpdate && (($newState != $order->getState()) || ($newStatus != $order->getStatus()))) {
+
+            // Set payment transaction
+            $payment = $order->getPayment();
+            $payment->setTransactionId($this->getCallbackData('transaction_id'));
+            //$formattedPrice = (int) $this->getCallbackData('amount') / 100 . " " . $this->getCallbackData('currency');
+            $payment->addTransaction(Mage_Sales_Model_Order_Payment_Transaction::TYPE_ORDER, null, false, $statusMessage);
+
             // Set order state and status
             $order->setState($newState, $newStatus, $statusMessage);
             Mage::helper('ferbuy')->log("Changing state to '$newState' with message '$statusMessage' for order ID: $id.");
@@ -295,12 +302,9 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
                 $order->setEmailSent(true);
                 $order->sendNewOrderEmail();
             }
-            
-            // Save order status changes
-            $order->save();
-            
+
             // Create an invoice when the payment is completed
-            if ($complete && !$canceled && $autocreateInvoice) {
+            if ($complete && !$canceled && $autoCreateInvoice) {
                 $invoiceCreated = $this->createInvoice($order);
                 if ($invoiceCreated) {
                     Mage::helper('ferbuy')->log("Creating invoice for order ID: $id.");
@@ -313,6 +317,9 @@ class Ferratum_Ferbuy_Model_Base extends Varien_Object
                     $this->eventInvoicingFailed($order);
                 }
             }
+
+            // Save order status changes
+            $order->save();
         }
         
         // Unlock

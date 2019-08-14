@@ -1,0 +1,27 @@
+<?php
+/**
+ * Note: This mark is a requirement of FerBuy
+ * @see Ferratum_Ferbuy_Block_Form
+ */
+
+$locale = substr(Mage::app()->getLocale()->getLocaleCode(), 0, 2);
+
+$precheckLink = Mage::helper('ferbuy')->getPrecheckLink();
+$siteId = Mage::helper('ferbuy')->getSiteId();
+$title = Mage::helper('ferbuy')->getTitle();
+$magentoVersion = Mage::getVersion();
+
+$utm_data = "utm_source=$siteId&utm_medium=plugin.Magento.$magentoVersion&utm_campaign=plugin.Magento.$siteId";
+$url = "/?" . $utm_data;
+if (strlen($locale) > 0) {
+    $url = "/" . $locale . "/?" . $utm_data;
+}
+?>
+<!-- FerBuy Logo -->
+<img src="<?php echo $this->escapeHtml($this->getSkinUrl('images/ferbuy/logo-ferbuy.png'))?>" alt="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('ferbuy')->__('FerBuy (Buy Now, Pay Later)')) ?>" class="v-middle" />&nbsp;<?php echo $title; ?>&nbsp;
+<?php if ($precheckLink == '1'): ?>
+<a href="https://gateway.ferbuy.com/precheck<?php echo $url; ?>" onclick="javascript:window.open('https://gateway.ferbuy.com/precheck<?php echo $url; ?>','ferbuyprecheck','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, ,left=0, top=0, width=800, height=600'); return false;">
+    <?php echo Mage::helper('ferbuy')->__('Check your limit at FerBuy'); ?>
+</a>
+<?php endif; ?>
+<!-- FerBuy Logo -->

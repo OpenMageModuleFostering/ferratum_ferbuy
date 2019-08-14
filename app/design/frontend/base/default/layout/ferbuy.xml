@@ -1,0 +1,7 @@
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/ferbuy.css</stylesheet></action>
+        </reference>
+    </default>
+</layout>

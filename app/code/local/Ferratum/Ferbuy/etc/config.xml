@@ -20,7 +20,7 @@
 <config>
 	<modules>
 		<Ferratum_Ferbuy>
-			<version>1.3.2</version>
+			<version>1.4.0</version>
 		</Ferratum_Ferbuy>
 	</modules>
     
@@ -89,9 +89,27 @@
                 </admin>
             </resources>
         </acl>
+        <events>
+            <sales_order_shipment_save_after>
+                <observers>
+                    <ferbuy>
+                        <type>singleton</type>
+                        <class>ferbuy/observer</class>
+                        <method>salesOrderShipmentSaveAfter</method>
+                    </ferbuy>
+                </observers>
+            </sales_order_shipment_save_after>
+        </events>
     </adminhtml>
     
 	<frontend>
+        <layout>
+            <updates>
+                <ferbuy>
+                    <file>ferbuy.xml</file>
+                </ferbuy>
+            </updates>
+        </layout>
 		<routers>
 			<ferbuy>
 				<use>standard</use>
@@ -108,8 +126,6 @@
             <ferbuy>
                 <active>1</active>
                 <model>ferbuy/ferbuy</model>
-                <title>FerBuy (Buy Now, Pay Later)</title>
-                <allowspecific>0</allowspecific>
             </ferbuy>
         </payment>
         
@@ -123,14 +139,17 @@
                 <invoicing_failed>0</invoicing_failed>
                 <notification_email>general</notification_email>
                 <live_mode>demo</live_mode>
-                <debug>0</debug>
+                <debug>1</debug>
+                <precheck_link>1</precheck_link>
             </settings>
-  tings     <ferbuy>
+            <ferbuy>
 				<active>1</active>
                 <gateway><![CDATA[https://gateway.ferbuy.com/]]></gateway>
                 <model>ferbuy/ferbuy</model>
 				<title>FerBuy (Buy Now, Pay Later)</title>
                 <allowspecific>0</allowspecific>
+                <payment_action>order</payment_action>
+                <sort_order>10</sort_order>
             </ferbuy>
         </ferbuy>
     </default>

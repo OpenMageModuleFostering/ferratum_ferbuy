@@ -21,6 +21,7 @@ class Ferratum_Ferbuy_Helper_Data extends Mage_Core_Helper_Abstract
 	const XML_PATH_LIVE_MODE           = 'ferbuy/settings/live_mode';
 	const XML_PATH_SITE_ID             = 'ferbuy/settings/site_id';
 	const XML_PATH_HASH_KEY            = 'ferbuy/settings/hash_key';
+    const XML_PATH_PRECHECK_LINK       = 'ferbuy/settings/precheck_link';
 	const XML_PATH_AUTOCREATE_INVOICE  = 'ferbuy/settings/autocreate_invoice';
 	const XML_PATH_MAIL_INVOICE        = 'ferbuy/settings/mail_invoice';
 	const XML_PATH_INVOICING_FAILED    = 'ferbuy/settings/invoicing_failed';
@@ -70,6 +71,16 @@ class Ferratum_Ferbuy_Helper_Data extends Mage_Core_Helper_Abstract
 	{
 		return Mage::getStoreConfig(self::XML_PATH_HASH_KEY);
 	}
+
+    /**
+     * getPrecheckLink
+     *
+     * @return string
+     */
+    public function getPrecheckLink()
+    {
+        return Mage::getStoreConfig(self::XML_PATH_PRECHECK_LINK);
+    }
 
 	/**
 	 * getAutocreateInvoice
@@ -249,8 +260,8 @@ class Ferratum_Ferbuy_Helper_Data extends Mage_Core_Helper_Abstract
 	 */
 	public function log($msg)
 	{
-		if ($this->getIsDebug()) {
-			Mage::log($msg, null, $this->_logFileName);
+		if ($this->getIsDebug() == '1') {
+			Mage::log($msg, null, $this->_logFileName, true);
 		}
 	}
 

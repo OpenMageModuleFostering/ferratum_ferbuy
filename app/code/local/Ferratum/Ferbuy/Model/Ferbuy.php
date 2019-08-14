@@ -24,6 +24,7 @@ class Ferratum_Ferbuy_Model_Ferbuy extends Mage_Payment_Model_Method_Abstract
      * @var mixed 
      */
     protected $_code = 'ferbuy';
+    protected $_formBlockType = 'ferbuy/form';
     
     /**
      * FerBuy settings
@@ -31,19 +32,19 @@ class Ferratum_Ferbuy_Model_Ferbuy extends Mage_Payment_Model_Method_Abstract
      * @var mixed
      */
 
-    protected $_supportedCurrencies = array('SGD', 'PLN', 'CZK', 'EUR');
+    protected $_supportedCurrencies = array('SGD', 'PLN', 'CZK', 'EUR', 'BGN');
     
     /**
      * Mage_Payment_Model settings
      * 
      * @var bool
      */
-    protected $_isGateway                  = true;
-    protected $_canAuthorize               = true;
-    protected $_canCapture                 = true;
-    protected $_canUseInternal             = false;
-    protected $_canUseCheckout             = true;
-    protected $_canUseForMultishipping     = true;
+    protected $_isGateway                   = true;
+    protected $_canOrder                    = true;
+    protected $_canUseInternal              = false;
+    protected $_canUseCheckout              = true;
+    protected $_isInitializeNeeded          = false;
+    protected $_canUseForMultishipping      = true;
     
     /**
      * Return Gateway Url
@@ -53,8 +54,24 @@ class Ferratum_Ferbuy_Model_Ferbuy extends Mage_Payment_Model_Method_Abstract
     public function getGatewayUrl()
     {
         $env = (Mage::helper('ferbuy')->getLiveMode() == 'live') ? 'live/' : 'demo/';
-        
         return Mage::helper('ferbuy')->getGateway() . $env;
+    }
+
+    /**
+     * Retrieve information from payment configuration
+     *
+     * @param string $field
+     * @param int|string|null|Mage_Core_Model_Store $storeId
+     *
+     * @return mixed
+     */
+    public function getConfigData($field, $storeId = null)
+    {
+        if (null === $storeId) {
+            $storeId = $this->getStore();
+        }
+        $path = 'ferbuy/'.$this->getCode().'/'.$field;
+        return Mage::getStoreConfig($path, $storeId);
     }
     
     /**

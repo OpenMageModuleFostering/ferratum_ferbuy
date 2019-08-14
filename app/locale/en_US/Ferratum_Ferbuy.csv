@@ -39,3 +39,7 @@
 "Transaction canceled by user.","Transaction canceled by user."
 "Transaction started, waiting for payment.","Transaction started, waiting for payment."
 "You will be redirected to FerBuy to finish your transaction.","You will be redirected to FerBuy to finish your transaction."
+"Display Pre-Check","Display Pre-Check"
+"Displays a special link where customers can pre-check the loan limit with FerBuy.","Displays a special link where customers can pre-check the loan limit with FerBuy."
+"Check your limit at FerBuy","Check your limit at FerBuy"
+"You will be redirected to the FerBuy website when you place an order.","You will be redirected to the FerBuy website when you place an order."
