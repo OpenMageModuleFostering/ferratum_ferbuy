@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magento Ferbuy payment extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    Mage
+ * @package     Ferratum_Ferbuy
+ * @author      FerBuy, <info@ferbuy.com>
+ * @copyright   Copyright (c) 2015 (http://www.ferbuy.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<sections>        
+        <ferbuy module="ferbuy">
+            <label>Ferbuy</label>
+            <class>ferbuy-section</class>
+            <header_css>ferbuy-header</header_css>
+            <tab>sales</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label comment">
+					<label>Settings</label>
+                    <comment><![CDATA[<strong>Note:</strong> Don't forget to set-up in the <a href="https://my.ferbuy.com/" target="_blank">My Backoffice</a> a Control URL to "http://www.yourdomain.com/ferbuy/payment/control/".]]></comment>
+					<sort_order>100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+                        <live_mode translate="label comment">
+							<label>Test/Live Mode</label>
+							<frontend_type>select</frontend_type>
+							<comment><![CDATA[Switching between test and live mode. If you don't have an account <a href='http://www.ferbuy.com/' target='_blank'>Sign Up</a>.]]></comment>
+							<source_model>ferbuy/adminhtml_system_config_source_modes</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</live_mode>
+                        <site_id translate="label comment">
+                            <label>Site ID</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Fill in you Site ID number. You can find your Site ID number at <a href="https://merchant.ferbuy.com/" target="_blank">Merchant Backoffice</a>.]]></comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </site_id>                        
+                        <hash_key translate="label comment">
+                            <label>Checksum</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Fill in you secret checksum key for the site. You can create your hash key code at <a href="https://merchant.ferbuy.com/" target="_blank">Merchant Backoffice</a>.]]></comment>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hash_key>
+						<autocreate_invoice translate="label comment">
+							<label>Create invoice after payment</label>
+							<frontend_type>select</frontend_type>
+                            <comment>Automatically create invoices after payment.</comment>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</autocreate_invoice>                        
+						<mail_invoice translate="label comment">
+							<label>Mail invoice to customer</label>
+							<frontend_type>select</frontend_type>
+                            <comment>Automatically mail invoices to a customer.</comment>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</mail_invoice>
+                        <invoicing_failed translate="label">
+							<label>Notify on failed invoice creation</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</invoicing_failed>
+                        <notification_email translate="label">
+							<label>Notifications recipient</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_email_identity</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</notification_email>
+						<initialized_status translate="label">
+							<label>Transaction in progress status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</initialized_status>                        
+						<complete_status translate="label">
+							<label>Transaction complete status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</complete_status>                        
+						<failed_status translate="label">
+							<label>Transaction failed status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</failed_status>
+                        <debug translate="label comment">
+							<label>Debug</label>
+							<frontend_type>select</frontend_type>
+                            <comment>Will log details for debugging purposes in /var/log/ferbuy.log file.</comment>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>130</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</debug>
+                    </fields>
+                </settings>
+                
+                <ferbuy translate="label" module="ferbuy">
+					<label>FerBuy (Buy Now, Pay Later)</label>
+					<sort_order>200</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<gateway translate="label comment">
+							<label>Gateway url</label>
+							<frontend_type>text</frontend_type>
+							<comment>https://gateway.ferbuy.com/</comment>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</gateway>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+                        <min_order_total translate="label comment">
+                            <label>Minimum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Checkout option will not be available with an order that does not meet the minimum.</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </min_order_total>
+                        <max_order_total translate="label comment">
+                            <label>Maximum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Checkout option will not be available with an order that does exceeds the maximum.</comment>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_order_total>
+						 <allowspecific translate="label">
+                            <label>Payment from applicable countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>40</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+                            <label>Payment from Specific countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>50</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</specificcountry>
+						<sort_order translate="label">
+							<label>Sort order</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sort_order>
+					</fields>
+				</ferbuy>
+            </groups>
+        </ferbuy>
+    </sections>
+</config>

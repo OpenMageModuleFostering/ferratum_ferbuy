@@ -1,0 +1,44 @@
+/**
+ * Magento Ferbuy payment extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    Mage
+ * @package     Ferratum_Ferbuy
+ * @author      FerBuy, <info@ferbuy.com>
+ * @copyright   Copyright (c) 2013 (http://www.ferbuy.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+h3.ferbuy-header { background:url(images/ferbuy.png) no-repeat 0 0; height:0; overflow:hidden; padding:22px 0 0; width:55px; }
+
+ul.tabs a.ferbuy-section,
+ul.tabs a.ferbuy-section:hover { background:url(images/tabs_span_bg.gif) repeat-x 0 100%; border-bottom:none; padding:0.5em 0.5em 0.5em 1.5em; }
+ul.tabs a.ferbuy-section:hover { background-color:#d8e6e6; }
+ul.tabs a.ferbuy-section.active, ul.tabs a.ferbuy-section.active:hover { background-color:#fff; }
+ul.tabs a.ferbuy-section span,
+ul.tabs a.ferbuy-section:hover span { background:url(images/ferbuy.png) no-repeat 0 0; height:0; overflow:hidden; padding:22px 0 0; width:55px; }
+
+.ferbuy-selection { border-collapse:collapse; width:100%; }
+.ferbuy-selection .ferbuy-selection-info { text-align:right; }
+.ferbuy-selection th { font-size:13px; padding:5px 0; text-align:left; vertical-align:middle; }
+.ferbuy-selection td { background:#f2f2f2; border-bottom:5px solid #fff; padding:5px; vertical-align:top; }
+.ferbuy-selection .ferbuy-selection-simplified { background:#fff; padding-left:35px; }
+.ferbuy-selection td a { color:#2997d8; }
+.ferbuy-selection td strong { color:#3c616a; }
+.ferbuy-selection td label { display:block; padding-left:30px; text-indent:-30px; }
+.ferbuy-selection td div label { display:inline; padding:0; text-indent:0; }
+.ferbuy-selection td input { height:13px; overflow:hidden; margin-right:15px; position:relative; top:-1px; width:13px; vertical-align:middle; }
+
+.ferbuy-config .form-list { width:100%; }
+.ferbuy-config tr.hover { background:#f7f7f7; }
+.ferbuy-config tr.hover label { cursor:help; }
+
+.ferbuy-credentials { border:1px solid #f2f2f2; }
+.ferbuy-credentials caption { padding:5px; text-align:left; }
+.ferbuy-credentials .value { color:#ccc; }

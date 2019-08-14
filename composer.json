@@ -1,13 +1,13 @@
 {
     "name": "OpenMageModuleFostering/Ferratum_Ferbuy",
     "type": "magento-module",
-    "license": "OSL",
+    "license": "OSL-v3.0",
     "homepage": "",
-    "description": "FerBuy "Buy now, Pay later" extension for Magento 1.5 and higher",
+    "description": "FerBuy Payment Module",
     "authors": [
     {
         "name": "Fer Buy",
-        "email": "bjorn.zwaaneveld@ferbuy.com"
+        "email": "info@ferbuy.com"
     }
 ],
     "suggest": {

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magento Ferbuy payment extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    Mage
+ * @package     Ferratum_Ferbuy
+ * @author      FerBuy, <info@ferbuy.com>
+ * @copyright   Copyright (c) 2015 (http://www.ferbuy.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<Ferratum_Ferbuy>
+			<version>1.1.0</version>
+		</Ferratum_Ferbuy>
+	</modules>
+    
+	<global>
+		<blocks>
+			<ferbuy>
+				<class>Ferratum_Ferbuy_Block</class>
+			</ferbuy>
+		</blocks>
+		<helpers>
+			<ferbuy>
+				<class>Ferratum_Ferbuy_Helper</class>
+			</ferbuy>
+		</helpers>
+		<models>
+			<ferbuy>
+				<class>Ferratum_Ferbuy_Model</class>
+			</ferbuy>
+		</models>
+		<resources>
+			<ferbuy_setup>
+				<setup>
+					<module>Ferratum_Ferbuy</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</ferbuy_setup>
+			<ferbuy_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</ferbuy_read>
+			<ferbuy_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</ferbuy_write>
+		</resources>
+	</global>
+    
+    <adminhtml>
+        <layout>
+            <updates>
+                <ferbuy>
+                    <file>ferbuy.xml</file>
+                </ferbuy>
+            </updates>
+        </layout>        
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ferbuy>
+                                            <title>Ferbuy Settings</title>
+                                        </ferbuy>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    
+	<frontend>
+		<routers>
+			<ferbuy>
+				<use>standard</use>
+				<args>
+					<module>Ferratum_Ferbuy</module>
+					<frontName>ferbuy</frontName>
+				</args>
+			</ferbuy>
+		</routers>
+	</frontend>
+    
+    <default>
+        <payment>
+            <ferbuy>
+                <active>1</active>
+                <model>ferbuy/ferbuy</model>
+                <title>FerBuy (Buy Now, Pay Later)</title>
+                <allowspecific>0</allowspecific>
+            </ferbuy>
+        </payment>
+        
+        <ferbuy>
+            <settings>
+                <initialized_status>pending</initialized_status>
+                <complete_status>processing</complete_status>
+                <failed_status>canceled</failed_status>
+                <autocreate_invoice>1</autocreate_invoice>
+                <mail_invoice>1</mail_invoice>
+                <invoicing_failed>0</invoicing_failed>
+                <notification_email>general</notification_email>
+                <live_mode>demo</live_mode>
+                <debug>0</debug>
+            </settings>
+  tings     <ferbuy>
+				<active>1</active>
+                <gateway><![CDATA[https://gateway.ferbuy.com/]]></gateway>
+                <model>ferbuy/ferbuy</model>
+				<title>FerBuy (Buy Now, Pay Later)</title>
+                <allowspecific>0</allowspecific>
+            </ferbuy>
+        </ferbuy>
+    </default>
+</config>

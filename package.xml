@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <package>
     <name>Ferratum_Ferbuy</name>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <stability>stable</stability>
-    <license>OSL</license>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
     <channel>community</channel>
     <extends/>
-    <summary>FerBuy "Buy now, Pay later" extension for Magento 1.5 and higher</summary>
-    <description>FerBuy is a simple and safe payment solution based on the "buy now, pay later" concept. Through FerBuy you can shop from home and pay after delivery. This gives your customers the chance to see the product before they have to pay for it.&#xD;
-</description>
-    <notes>FerBuy is now active in Bulgaria! Visit www.ferbuy.bg for more information.</notes>
-    <authors><author><name>Fer Buy</name><user>ferbuy</user><email>bjorn.zwaaneveld@ferbuy.com</email></author></authors>
-    <date>2015-05-02</date>
-    <time>06:13:17</time>
-    <contents><target name="magelocal"><dir name="."><dir name="app"><dir name="design"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="ferbuy.xml" hash=""/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="Ferratum_Ferbuy.xml" hash=""/></dir><dir name="locale"><dir name="bg_BG"><file name="Ferratum_Ferbuy.xml" hash=""/></dir><dir name="en_US"><file name="Ferratum_Ferbuy.xml" hash=""/></dir></dir></dir></dir></dir></target></contents>
+    <summary>FerBuy Payment Module</summary>
+    <description>FerBuy is a simple and safe payment solution based on the "buy now, pay later" concept. Through FerBuy you can shop from home and pay within 14 days. See below how simple this is.</description>
+    <notes>v1.3.0:&#xD;
+    Adding localization support</notes>
+    <authors><author><name>Fer Buy</name><user>FerBuy</user><email>info@ferbuy.com</email></author></authors>
+    <date>2015-08-25</date>
+    <time>12:38:20</time>
+    <contents><target name="magelocal"><dir name="Ferratum"><dir name="Ferbuy"><dir name="Block"><file name="Redirect.php" hash="bdb59a1854ced707363d054ae1e9d4a4"/></dir><dir name="Helper"><file name="Data.php" hash="2bcbdb2fd52065d3b371f5c16fa44194"/></dir><dir name="Model"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Source"><file name="Modes.php" hash="aa5f540849179c47ea6eed09aad77f6d"/></dir></dir></dir></dir><file name="Base.php" hash="132170d3ea2ba0d60d5a7cdb6dff6403"/><file name="Ferbuy.php" hash="b95698328a35691851d69c474b694936"/></dir><dir name="controllers"><file name="PaymentController.php" hash="4ece51713291736392cfd7c0cd61cc1a"/></dir><dir name="etc"><file name="adminhtml.xml" hash="f37221cd0943f83ee38d554c0d339619"/><file name="config.xml" hash="0875a0f413f9a8579bf661368b5d41db"/><file name="system.xml" hash="2a9eabb0c6e22eb30827f37619cd0e7b"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Ferratum_Ferbuy.xml" hash="eeaa05c490b6958c426577bcd3569cb6"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="ferbuy.xml" hash="b5158397519eef21968f5ce26a433549"/></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="ferbuy"><file name="redirect.phtml" hash="837f367951edbe379bc38ddd0acab8d4"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="adminhtml"><dir name="default"><dir name="default"><file name="ferbuy.css" hash="819549e60f84323f494ab42e8e52af68"/><dir name="images"><file name="ferbuy.png" hash="6f69778a6152cd21c6a6ec2fdc28d1d7"/></dir></dir></dir></dir></target><target name="magelocale"><dir name="en_US"><file name="Ferratum_Ferbuy.csv" hash="78573175d6346dd714567309352b58e4"/></dir></target></contents>
     <compatible/>
-    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php><extension><name>curl</name><min></min><max></max></extension></required></dependencies>
+    <dependencies><required><php><min>5.3.0</min><max>6.0.0</max></php></required></dependencies>
 </package>
