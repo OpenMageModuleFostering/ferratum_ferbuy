@@ -32,7 +32,7 @@
             <groups>
                 <settings translate="label comment">
 					<label>Settings</label>
-                    <comment><![CDATA[<strong>Note:</strong> Don't forget to set-up in the <a href="https://my.ferbuy.com/" target="_blank">My Backoffice</a> a Control URL to "http://www.yourdomain.com/ferbuy/payment/control/".]]></comment>
+                    <comment><![CDATA[<strong>Note:</strong> Don't forget to set-up in the <a href="https://my.ferbuy.com/merchant" target="_blank">Merchant Backoffice</a> a Control URL to "http://www.yourdomain.com/ferbuy/payment/control/".]]></comment>
 					<sort_order>100</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
@@ -51,16 +51,16 @@
                         <site_id translate="label comment">
                             <label>Site ID</label>
                             <frontend_type>text</frontend_type>
-                            <comment><![CDATA[Fill in you Site ID number. You can find your Site ID number at <a href="https://merchant.ferbuy.com/" target="_blank">Merchant Backoffice</a>.]]></comment>
+                            <comment><![CDATA[Fill in you Site ID number. You can find your Site ID number at <a href="https://my.ferbuy.com/merchant" target="_blank">Merchant Backoffice</a>.]]></comment>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </site_id>                        
                         <hash_key translate="label comment">
-                            <label>Checksum</label>
+                            <label>Secret</label>
                             <frontend_type>text</frontend_type>
-                            <comment><![CDATA[Fill in you secret checksum key for the site. You can create your hash key code at <a href="https://merchant.ferbuy.com/" target="_blank">Merchant Backoffice</a>.]]></comment>
+                            <comment><![CDATA[Fill in you secret key for the site. You can create your secret key code at <a href="https://my.ferbuy.com/merchant" target="_blank">Merchant Backoffice</a>.]]></comment>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
