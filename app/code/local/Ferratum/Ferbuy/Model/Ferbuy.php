@@ -52,7 +52,7 @@ class Ferratum_Ferbuy_Model_Ferbuy extends Mage_Payment_Model_Method_Abstract
      */    
     public function getGatewayUrl()
     {
-        $env = (Mage::helper('ferbuy')->getLiveMode()) ? 'live/' : 'demo/';
+        $env = (Mage::helper('ferbuy')->getLiveMode() == 'live') ? 'live/' : 'demo/';
         
         return Mage::helper('ferbuy')->getGateway() . $env;
     }
