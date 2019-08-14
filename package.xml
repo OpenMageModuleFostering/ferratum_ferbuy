@@ -1,26 +1,19 @@
 <?xml version="1.0"?>
 <package>
     <name>Ferratum_Ferbuy</name>
-    <version>1.1.1</version>
+    <version>1.2.0</version>
     <stability>stable</stability>
-    <license uri="http://www.opensource.org/licenses/OSL-3.0">OSL 3.0</license>
+    <license>OSL</license>
     <channel>community</channel>
     <extends/>
-    <summary>FerBuy Online Payments</summary>
-    <description>FerBuy payments provides the possibility for your customers to pay by invoice. The FerBuy product is currently available in the following countries:&#xD;
-&#xD;
-Czech Republic - www.ferbuy.cz&#xD;
-Poland - www.ferbuy.pl&#xD;
-Singapore - www.ferbuy.com&#xD;
-&#xD;
-For more information, please visit your local FerBuy website.&#xD;
+    <summary>FerBuy "Buy now, Pay later" extension for Magento 1.5 and higher</summary>
+    <description>FerBuy is a simple and safe payment solution based on the "buy now, pay later" concept. Through FerBuy you can shop from home and pay after delivery. This gives your customers the chance to see the product before they have to pay for it.&#xD;
 </description>
-    <notes>* Send shopping cart information to FerBuy&#xD;
-* Correct support for multi-currency shops</notes>
-    <authors><author><name>ferbuy</name><user>ferbuy</user><email>info@ferbuy.com</email></author></authors>
-    <date>2013-08-22</date>
-    <time>07:49:51</time>
-    <contents><target name="magelocal"><dir name="Ferratum"><dir name="Ferbuy"><dir name="Block"><file name="Redirect.php" hash="3c997c3d6741a67daca980dd5bea6b54"/></dir><dir name="Helper"><file name="Data.php" hash="57656afd9b7578c100e551cd7c661319"/></dir><dir name="Model"><dir name="Adminhtml"><dir name="System"><dir name="Config"><dir name="Source"><file name="Modes.php" hash="8745cabaaf2ba688aa07773eb9e4507c"/></dir></dir></dir></dir><file name="Base.php" hash="95df7645281b6da83a11d5d5b6aab321"/><file name="Ferbuy.php" hash="40cfe8b707e4b1536113b83e1cafc006"/></dir><dir name="controllers"><file name="PaymentController.php" hash="d077d19ef89a7233e28da89bb5f212a8"/></dir><dir name="etc"><file name="adminhtml.xml" hash="3ef2013840386516ff6700925b8d3d89"/><file name="config.xml" hash="e1dab3e09f71aed85e1348037a605151"/><file name="system.xml" hash="6867d0d6cd45adaf384f6069fbe2a4e4"/></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><file name="ferbuy.xml" hash="d41d8cd98f00b204e9800998ecf8427e"/></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="ferbuy"><file name="redirect.phtml" hash="5e1940098954f124ea7b9b973ba94e72"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Ferratum_Ferbuy.xml" hash="63ac15b41485745bc375b770d71530f4"/></dir></target></contents>
+    <notes>FerBuy is now active in Bulgaria! Visit www.ferbuy.bg for more information.</notes>
+    <authors><author><name>Fer Buy</name><user>ferbuy</user><email>bjorn.zwaaneveld@ferbuy.com</email></author></authors>
+    <date>2015-05-02</date>
+    <time>06:13:17</time>
+    <contents><target name="magelocal"><dir name="."><dir name="app"><dir name="design"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="ferbuy.xml" hash=""/></dir></dir></dir></dir></dir><dir name="etc"><dir name="modules"><file name="Ferratum_Ferbuy.xml" hash=""/></dir><dir name="locale"><dir name="bg_BG"><file name="Ferratum_Ferbuy.xml" hash=""/></dir><dir name="en_US"><file name="Ferratum_Ferbuy.xml" hash=""/></dir></dir></dir></dir></dir></target></contents>
     <compatible/>
-    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php><extension><name>curl</name><min></min><max></max></extension></required></dependencies>
 </package>
