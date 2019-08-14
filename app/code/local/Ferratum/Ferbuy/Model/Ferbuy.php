@@ -205,8 +205,8 @@ class Ferratum_Ferbuy_Model_Ferbuy extends Mage_Payment_Model_Method_Abstract
         $s_arr['shop_version']      = 'Magento '. Mage::getVersion();
         $s_arr['plugin_name']       = 'Ferratum_Ferbuy';
         $s_arr['plugin_version']    = Mage::helper('ferbuy')->getPluginVersion();
-        $s_arr['shopping_cart']    = $encodedShoppingCart;
-        //$s_arr['extra']             = $this->getCheckout()->getFerbuyQuoteId();
+        $s_arr['shopping_cart']     = $encodedShoppingCart;
+        $s_arr['language']          = substr(Mage::getStoreConfig('general/locale/code', $order->getStoreId()), 0, 2);
         
         $env = ( Mage::helper('ferbuy')->isLive()) ? 'live' : 'demo';
         $s_arr['checksum'] = sha1(join("&", array(

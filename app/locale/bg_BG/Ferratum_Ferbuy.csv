@@ -38,4 +38,5 @@
 "Transaction timed out.","Транзакцията е изтекла."
 "Transaction canceled by user.","Транзакцията е отказана от потребител."
 "Transaction started, waiting for payment.","Транзакцията е започната, изчакване за плащане."
-"You will be redirected to FerBuy to finish your transaction.","Ще бъдете пренасочени към FerBuy, за да завършите Вашата транзакция."
+"You will be redirected to FerBuy to finish your transaction.","Пренасочваме ви към FerBuy, за да завършите транзакцията си."
+"You will be redirected to the FerBuy website when you place an order.","С FerBuy може да платите покупката си след 14 дни с 0лв оскъпяване. Ще бъдете пренасочени към FerBuy."
