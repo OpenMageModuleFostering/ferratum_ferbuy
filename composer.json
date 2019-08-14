@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Ferratum_Ferbuy",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "",
+    "description": "FerBuy Online Payments",
+    "authors": [
+    {
+        "name": "ferbuy",
+        "email": "info@ferbuy.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
