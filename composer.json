@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Ferratum_Ferbuy",
+    "name": "openmage-module-fostering\/ferratum_ferbuy",
     "type": "magento-module",
-    "license": "OSL-v3.0",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "FerBuy Payment Module",
     "authors": [
